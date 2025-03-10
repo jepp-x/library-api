@@ -1,5 +1,5 @@
 import express from 'express';
-import library_routes from './routes/library_routes.js';
+import libraryRouter from './routes/library_routes.js';
 import mongoose from 'mongoose';
 
 
@@ -13,11 +13,11 @@ const app = express();
 app.use(express.json());
 
 // use the routers
-app.use(library_routes);
+app.use(libraryRouter);
 
 // starting server
 app.listen(5000,() =>{
-    console.log('server listening on port 5000');
+    console.log('server is listening on port 5000');
 })
 
 
