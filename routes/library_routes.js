@@ -11,7 +11,7 @@ libraryRouter.post('/books', addBook);
 libraryRouter.get('/books', getBook);
 
 libraryRouter.patch('/books/:id', updateBook);
-libraryRouter.delete('/books/id', deleteBook);
+libraryRouter.delete('/books/:id', deleteBook);
 
 //Export router
 export default libraryRouter; 
