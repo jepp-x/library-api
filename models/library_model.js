@@ -1,5 +1,5 @@
-import { required } from "joi";
-import { Schema } from "mongoose";
+// Create a schema and use it to create a model
+import { Schema, model } from "mongoose";
 const librarySchema = new Schema({
     title: {type:String, required:true, unique:true},
     author: {type:String, required:true},
