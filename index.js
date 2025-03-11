@@ -13,10 +13,10 @@ const app = express();
 app.use(express.json());
 
 // use the routers
-app.use(libraryRouter);
+app.use('/api/v1', libraryRouter);
 
 // starting server
-app.listen(5000,() =>{
+app.listen(5000, () => {
     console.log('server is listening on port 5000');
 })
 
