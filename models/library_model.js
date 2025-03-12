@@ -5,7 +5,7 @@ const librarySchema = new Schema({
     title: {type:String, required:true, unique:true},
     author: {type:String, required:true},
     pages:{type:Number, required:true},
-    publishedDate:{type:Date, required:true},
+    publishedDate:{type:String},
     genre:{type:String, required:true},
     language:{type:String, required:true},
     publisher:{type:String, required:true},
