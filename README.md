@@ -1,9 +1,9 @@
 # library-api
--Name all files in small letters and use undescroe(_) to represent space
+-Name all files in small letters and use undescore(_) to represent space
 
 # Setting up the Project:
 -Initialization: We begin by initializing a Node.js project using npm init -y.
--Dependencies: Essential dependencies include express, mongoose, dotenv, nodemon, and mongodb related packages. 
+-Dependencies: Essential dependencies include express, mongoose,cors, dotenv, nodemon, and mongodb related packages. 
 
 # MongoDB Connection:
 -Connection String: A connection string is required to establish a connection with the MongoDB database. 
