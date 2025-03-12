@@ -10,6 +10,7 @@ const librarySchema = new Schema({
     language:{type:String, required:true},
     publisher:{type:String, required:true},
     summary:{type:String, required:true},
+    image: {type:String}
 
 }, {timestamps:true
 
