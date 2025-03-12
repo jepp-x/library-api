@@ -70,14 +70,17 @@ export const searchBooks = async (req, res, next) => {
 
       // Build the search query to search for books by title, author or genre
       const searchQuery = {};
-      if (title) searchQuery.title = title;
-      if (author) searchQuery.author = author;
-      if (genre) searchQuery.genre = genre;
+      if (title) searchQuery.title = new RegExp(title, 'i');
+      if (author) searchQuery.author = new RegExp(author, 'i');
+      if (genre) searchQuery.genre = new RegExp(genre, 'i');
 
       // Search for books in the database
       const result = await LibraryModel.find(searchQuery);
       // Return response
-      res.status(200).json(result);
+      res.status(200).json({
+        success: true,
+        data: result
+      })
   
     } catch (error) {
       next(error);
