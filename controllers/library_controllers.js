@@ -60,4 +60,28 @@ export const deleteBook = async (req, res, next) => {
     next(error)
 
   }
-};
+}
+
+export const searchBooks = async (req, res, next) => {
+  try {
+      // Extract query parameters
+      const { title, author, genre } = req.query;
+
+      // Build the search query to search for books by title, author or genre
+      if (title) query.title = title;
+      if (author) query.author = author;
+      if (genre) query.genre = genre;
+
+      // Search for books in the database
+      const result = await LibraryModel.find(query);
+
+      // Return response
+      if (books.length > 0) {
+        res.json(books);
+      } else {
+        res.status(404).send("No books found");
+      }
+    } catch (error) {
+      next(error);
+    }
+  };
