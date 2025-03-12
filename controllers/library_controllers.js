@@ -1,3 +1,4 @@
+import { response } from "express";
 import { LibraryModel } from "../models/library_model.js"
 import { addLibraryValidator } from "../validators/library_validators.js"
 
@@ -68,19 +69,19 @@ export const searchBooks = async (req, res, next) => {
       const { title, author, genre } = req.query;
 
       // Build the search query to search for books by title, author or genre
-      if (title) query.title = title;
-      if (author) query.author = author;
-      if (genre) query.genre = genre;
+      const searchQuery = {};
+      if (title) searchQuery.title = title;
+      if (author) searchQuery.author = author;
+      if (genre) searchQuery.genre = genre;
 
       // Search for books in the database
-      const result = await LibraryModel.find(query);
-
+      const result = await LibraryModel.find(searchQuery);
       // Return response
-      if (books.length > 0) {
-        res.json(books);
-      } else {
-        res.status(404).send("No books found");
-      }
+      res.status(200).json({
+        success:true,
+        data:result
+      })
+  
     } catch (error) {
       next(error);
     }
