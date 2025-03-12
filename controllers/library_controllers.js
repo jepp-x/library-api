@@ -77,10 +77,7 @@ export const searchBooks = async (req, res, next) => {
       // Search for books in the database
       const result = await LibraryModel.find(searchQuery);
       // Return response
-      res.status(200).json({
-        success:true,
-        data:result
-      })
+      res.status(200).json(result);
   
     } catch (error) {
       next(error);
