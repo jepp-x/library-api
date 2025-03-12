@@ -68,6 +68,12 @@ export const searchBooks = async (req, res, next) => {
       // Extract query parameters
       const { title, author, genre } = req.query;
 
+      if(!title && !author && !gnere){
+        return res.status(400).json({
+          success:false,
+          message:"please provide a (title, author, or genre)"
+        });
+      }
       // Build the search query to search for books by title, author or genre
       const searchQuery = {};
       if (title) searchQuery.title = new RegExp(title, 'i');
@@ -77,12 +83,24 @@ export const searchBooks = async (req, res, next) => {
       // Search for books in the database
       const result = await LibraryModel.find(searchQuery);
       // Return response
-      res.status(200).json({
-        success: true,
-        data: result
-      })
+      if(result.length > 0){
+        res.status(200).json({
+          success:true,
+          message: `${result.length} book(s) found`,
+          data: result
+        });
+      } else {
+        res.status(404).json({
+          success:false,
+          message:"Book Not Available"
+        });
+      }
   
     } catch (error) {
-      next(error);
+      res.status(500).json({
+        success:false,
+        message:"Error Occured during search!",
+        error: error.message
+      })
     }
   };
