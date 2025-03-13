@@ -6,7 +6,10 @@ export const addBook = async (req, res, next) => {
   try {
     // Upload product image
     // Validate prodcut information
-    const { error, value } = addLibraryValidator.validate(req.body, { abortEarly: false });
+    const { error, value } = addLibraryValidator.validate({
+      ...req.body,
+      image: req.file?.filename
+    }, { abortEarly: false });
     if (error) {
       return res.status(400).json(error);
       // to get just the error message replace the error with "error.details[0].message"
