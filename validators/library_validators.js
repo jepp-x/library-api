@@ -10,5 +10,6 @@ export const addLibraryValidator = Joi.object({
     language: Joi.string().required(),
     publisher: Joi.string().required(),
     summary: Joi.string().required(),
+    image: Joi.string().required(),
 
 })

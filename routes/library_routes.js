@@ -13,7 +13,7 @@ libraryRouter.post('/books', remoteUpload.single("image"), addBook);
 libraryRouter.get('/books', getBook);
 libraryRouter.get('/books/search', searchBooks); //I added it here so the code looks organised
 
-libraryRouter.patch('/books/:id', updateBook);
+libraryRouter.patch('/books/:id', remoteUpload.single("image"), updateBook);
 libraryRouter.delete('/books/:id', deleteBook);
 
 //Export router
