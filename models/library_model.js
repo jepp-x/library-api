@@ -1,5 +1,6 @@
 // Create a schema and use it to create a model
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
+import normalize from "normalize-mongoose";
 
 const librarySchema = new Schema({
     title: {type:String, required:true, unique:true},
@@ -15,5 +16,8 @@ const librarySchema = new Schema({
 }, {timestamps:true
 
 });
+
+
+librarySchema.plugin(normalize)
 
 export const LibraryModel = model('Book', librarySchema);
